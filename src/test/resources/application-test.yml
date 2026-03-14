@@ -17,3 +17,10 @@ spring:
   sql:
     init:
       mode: never
+  cloud:
+    config:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
