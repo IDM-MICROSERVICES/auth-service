@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI with Maven and SonarCloud Scan
 
 on:
   push:
@@ -23,3 +23,16 @@ jobs:
 
     - name: Build and test
       run: mvn -B clean verify
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v2
+      env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+          args: >
+            -Dsonar.projectKey=idm-microservices_account-service
+            -Dsonar.organization=idm-microservices
+    - name: SonarCloud Quality Gate
+      uses: SonarSource/sonarqube-quality-gate-action@v1
+      timeout-minutes: 5
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
