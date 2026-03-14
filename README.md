@@ -11,3 +11,15 @@ Asegúrate de configurar las siguientes propiedades en tu `application.propertie
 1. **Clonación:**
    ```bash
    git clone [https://github.com/IDM-MICROSERVICES/auth-service.git](https://github.com/IDM-MICROSERVICES/auth-service.git)
+
+2. **Compilación:**
+   mvn clean install
+
+3. **Ejecución:**
+   mvn spring-boot:run
+
+**Endpoints Base**
+
+POST /auth/login: Autenticación de usuario y retorno de Token.
+
+POST /auth/register: Creación de nuevos usuarios con cifrado de contraseñas.
