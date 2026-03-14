@@ -1,9 +1,12 @@
 package com.idm.msvc.auth_service;
 
+import com.idm.msvc.auth_service.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -15,6 +18,13 @@ import org.springframework.test.context.TestPropertySource;
 		"spring.cloud.config.enabled=false"
 })
 class AuthServiceApplicationTests {
+
+	@MockitoBean
+	private UserDetailsService userDetailsService;
+
+	// Mockea el repositorio de usuarios si algún bean lo requiere
+	@MockitoBean
+	private UserRepository userRepository;
 
 	@Test
 	void contextLoads() {
