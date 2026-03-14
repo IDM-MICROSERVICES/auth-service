@@ -3,10 +3,11 @@ package com.idm.msvc.auth_service;
 import com.idm.msvc.auth_service.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -19,12 +20,19 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 })
 class AuthServiceApplicationTests {
 
-	@MockitoBean
-	private UserDetailsService userDetailsService;
+	@TestConfiguration
+	static class TestConfig {
 
-	// Mockea el repositorio de usuarios si algún bean lo requiere
-	@MockitoBean
-	private UserRepository userRepository;
+		@Bean
+		public UserDetailsService userDetailsService() {
+			return username -> null;
+		}
+
+		@Bean
+		public UserRepository userRepository() {
+			return null;
+		}
+	}
 
 	@Test
 	void contextLoads() {
