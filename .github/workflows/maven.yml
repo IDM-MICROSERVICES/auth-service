@@ -34,7 +34,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean test package
     - name: Submit Dependency Graph
-      uses: actions/dependency-submission@v3
+      uses: actions/dependency-submission@v4
       if: always()
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
