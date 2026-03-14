@@ -65,7 +65,7 @@ public class AuthService {
         );
 
         User savedUser = repository.save(user);
-        System.out.println("Usuario guardado: " + savedUser.getUsername()+"con rol "+savedUser.getRole());
+        log.info("Usuario guardado: " + savedUser.getUsername()+"con rol "+savedUser.getRole());
 
         return new RegisterResponse(user.getUsername());
     }

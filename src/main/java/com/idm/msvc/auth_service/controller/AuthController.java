@@ -71,13 +71,10 @@ public class AuthController {
             }
 
             String token = authHeader.substring(7);
-            System.out.println(token);
             jwtService.validateToken(token);
             return ResponseEntity.ok().build();
 
         } catch (Exception e) {
-            System.out.println("Error en Auth-Service: " + e.getMessage());
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
