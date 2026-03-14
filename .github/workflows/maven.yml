@@ -15,8 +15,12 @@ on:
     branches: [ "main","development"]
 permissions:
   contents: read
+  issues: write
+  id-token: write
+  pull-requests: write
+  actions: write
   security-events: write
-  actions: read
+  packages: write
 
 jobs:
   build:
