@@ -1,4 +1,4 @@
-name: Java CI with Maven and SonarCloud Scan
+name: Java CI with Maven and SonarCloud Scan and SonarCloud Quality Gate
 
 on:
   push:
