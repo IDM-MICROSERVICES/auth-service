@@ -14,8 +14,7 @@ on:
   pull_request:
     branches: [ "main","development"]
 permissions: 
-  contents: write
-  security-events: write
+  contents: read
 
 jobs:
   build:
